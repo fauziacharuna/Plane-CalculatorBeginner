@@ -1,7 +1,10 @@
 package com.android.fauziachmadharuna.recycleview;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.text.TextUtilsCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,6 +28,17 @@ public class Segitiga extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.segitiga_activity);
+        //Intent menu
+        Button backButton = (Button) findViewById(R.id.btnBack);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent menu = new Intent(v.getContext(), MainActivity.class);
+                startActivity(menu);
+            }
+        });
+
+        //Aritmatika
         final EditText etAlas = (EditText) findViewById(R.id.et_alasSegitiga);
         final EditText etTinggi = (EditText) findViewById(R.id.et_tinggiSegitiga);
         final EditText etMiring = (EditText) findViewById(R.id.et_miringSegitiga);
@@ -51,8 +65,10 @@ public class Segitiga extends AppCompatActivity {
                 String nilaiTinggiString = etTinggi.getText().toString();
                 String nilaiMiringString = etMiring.getText().toString();
 
-
-                if (nilaiAlasString != null && nilaiTinggiString != null && nilaiMiringString != null) {
+                if(TextUtils.isEmpty(etAlas.getText())|| TextUtils.isEmpty(etTinggi.getText())||TextUtils.isEmpty(etMiring.getText())){
+                    Toast.makeText(Segitiga.this, "Nilai yang dimasukkan tidak boleh kosong", Toast.LENGTH_SHORT).show();
+                }
+                else if (nilaiAlasString != null && nilaiTinggiString != null && nilaiMiringString != null) {
                     double alas = Float.parseFloat(nilaiAlasString);
                     double tinggi = Float.parseFloat(nilaiTinggiString);
                     double miring = Float.parseFloat(nilaiMiringString);

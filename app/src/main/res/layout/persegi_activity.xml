@@ -29,9 +29,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/cardview_light_background"
-            android:fontFamily="casual"
+            android:fontFamily="sans-serif"
+            android:padding="5dp"
             android:text="Persegi (bujur sangkar), yaitu persegi panjang yang semua sisinya sama panjang dan memilki 4 sudut berhadapan."
-            android:textColor="@color/colorPrimaryDark"
+            android:textColor="#000"
             android:textSize="16sp" />
 
         <TextView
@@ -39,7 +40,7 @@
             android:layout_height="wrap_content"
             android:background="@color/cardview_light_background"
             android:text="Luas = sisi(s) x sisi(s)\nKeliling = 4 x sisi(s)"
-            android:textColor="#ce7b00"
+            android:textColor="#000000"
             android:textSize="18sp" />
 
         <ImageView
@@ -80,6 +81,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="RESET" />
+            <Button
+                android:id="@+id/btnBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kembali"
+                android:onClick="btnBack"/>
         </LinearLayout>
 
         <TextView

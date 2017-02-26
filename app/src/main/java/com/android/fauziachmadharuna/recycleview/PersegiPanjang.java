@@ -1,7 +1,9 @@
 package com.android.fauziachmadharuna.recycleview;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -15,6 +17,15 @@ public class PersegiPanjang extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.persegipanjang_activity);
+        Button backButton=(Button) findViewById(R.id.btnBack);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent menu = new Intent(v.getContext(), MainActivity.class);
+                startActivity(menu);
+            }
+        });
+
 
         final EditText etSisi = (EditText) findViewById(R.id.et_sisipersegipanjang);
         final EditText etLebar = (EditText) findViewById(R.id.et_sisiLebarPersegiPanjang);
@@ -38,9 +49,11 @@ public class PersegiPanjang extends AppCompatActivity {
             public void onClick(View v) {
                 String nilaiPanjangString = etSisi.getText().toString();
                 String nilaiLebarString = etLebar.getText().toString();
+                if(TextUtils.isEmpty(etSisi.getText())||TextUtils.isEmpty(etLebar.getText())){
+                    Toast.makeText(PersegiPanjang.this, "Nilai yang dimasukkan tidak boleh kosong", Toast.LENGTH_SHORT).show();
+                }
 
-
-                if (nilaiPanjangString != null && nilaiLebarString != null) {
+                else if (nilaiPanjangString != null && nilaiLebarString != null) {
                     float panjang = Float.parseFloat(nilaiPanjangString);
                     float lebar = Float.parseFloat(nilaiLebarString);
 
